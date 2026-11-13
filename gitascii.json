@@ -1,4 +1,5 @@
 {
+  "username": "zwordup-sudo",
   "widgets": [
     {
       "widgetId": "header",
@@ -45578,7 +45579,10 @@
         "borderColor": "#1f3448",
         "customName": "",
         "langsCount": 5,
-        "hideBorder": false
+        "hideBorder": false,
+        "customLocation": "México",
+        "showWebsite": false,
+        "customRoles": "Full Stack Developer, AI Sysitems / Automation, Android Development"
       },
       "locked": false,
       "visible": true,
@@ -45651,5 +45655,10 @@
     "templateStyle": "native",
     "transparentBackground": false
   },
-  "templateId": "terminal"
+  "templateId": "terminal",
+  "profileSlug": "default",
+  "metadata": {
+    "revision": "rev_1794592811583_j2teu",
+    "updatedAt": "2026-11-13T18:00:14.319Z"
+  }
 }
