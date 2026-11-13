@@ -1,0 +1,35 @@
+
+name: Refresh DOLENT activity dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate real contribution visualization
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_LOGIN: zwordup-sudo
+        run: python3 scripts/render_dashboard.py
+
+      - name: Commit graphic when changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/dashboard.svg
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: refresh activity dashboard'
+            git push
+          else
+            echo 'Graphic is already up to date.'
+          fi
