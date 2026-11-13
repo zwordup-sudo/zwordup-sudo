@@ -23,7 +23,7 @@
 <text x="44.00" y="223.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#FF983C" >15</text>
 <line x1="42.00" y1="237.00" x2="250.00" y2="237.00" stroke="#263D50" stroke-width="1" opacity="1"/>
 <text x="44.00" y="258.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="400" fill="#A6BED0" >PUBLIC REPOS</text>
-<text x="44.00" y="295.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#B176FF" >2</text>
+<text x="44.00" y="295.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#B176FF" >3</text>
 <rect x="287.00" y="75.00" width="887.00" height="245.00" rx="10" fill="#0B1420" stroke="#263D50" stroke-width="1.1" />
 <path d="M300 103 V88 H400" fill="none" stroke="#22DDEA" stroke-width="2" opacity="1" />
 <line x1="1091.00" y1="89.00" x2="1160.00" y2="89.00" stroke="#22DDEA" stroke-width="1.2" opacity="0.65"/>
