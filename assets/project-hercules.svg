@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 155" width="1200" height="155" role="img" aria-label="DOLENT project archive 2: HERCULES">
+<defs>
+          <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0C1B29"/><stop offset=".57" stop-color="#080D16"/><stop offset="1" stop-color="#100E1D"/></linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17E0E7"/><stop offset=".65" stop-color="#153A63"/><stop offset="1" stop-color="#102734"/></linearGradient>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#254457" stroke-opacity=".28" fill="none" stroke-width=".7"/></pattern>
+          <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 2.4H1200" stroke="#000" stroke-opacity=".35" stroke-width=".4"/></pattern>
+          <radialGradient id="aura"><stop stop-color="#20D6E9" stop-opacity=".27"/><stop offset="1" stop-color="#20D6E9" stop-opacity="0"/></radialGradient>
+        </defs>
+<rect x="0.00" y="0.00" width="1200.00" height="155.00" rx="0" fill="url(#back)" />
+<rect x="1.50" y="1.50" width="1197.00" height="152.00" rx="14" fill="none" stroke="#263D50" stroke-width="1.7" />
+<line x1="28.00" y1="15.00" x2="102.00" y2="15.00" stroke="#22DDEA" stroke-width="2" opacity="1"/>
+<line x1="1072.00" y1="140.00" x2="1172.00" y2="140.00" stroke="#B176FF" stroke-width="2" opacity="1"/>
+<rect x="18.00" y="18.00" width="1164.00" height="119.00" rx="10" fill="#0B1420" stroke="#263D50" stroke-width="1.1" />
+<rect x="32.00" y="34.00" width="94.00" height="85.00" rx="7" fill="#11212D" stroke="#FF983C" stroke-width="1" />
+<text x="79.00" y="93.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="56" font-weight="700" fill="#FF983C" text-anchor="middle">H</text>
+<text x="156.00" y="50.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="17" font-weight="700" fill="#FF983C" >02  //  PROJECT ARCHIVE</text>
+<text x="153.00" y="88.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="39" font-weight="700" fill="#EEF6F9" >HERCULES</text>
+<text x="153.00" y="115.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="19" font-weight="400" fill="#A6BED0" >ANDROID FITNESS / TRAINING LOG</text>
+<circle cx="963.00" cy="53.00" r="5.00" fill="#FF983C" stroke="none" stroke-width="1" />
+<text x="981.00" y="60.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="17" font-weight="700" fill="#FF983C" >LOCAL PROJECT</text>
+<text x="1143.00" y="116.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="17" font-weight="500" fill="#668397" text-anchor="end">KOTLIN  /  COMPOSE  /  ROOM</text>
+<rect x="1052.00" y="58.00" width="8.00" height="33.00" rx="0" fill="#FF983C" opacity="0.30"/>
+<rect x="1067.00" y="80.00" width="8.00" height="11.00" rx="0" fill="#FF983C" opacity="0.38"/>
+<rect x="1082.00" y="76.00" width="8.00" height="15.00" rx="0" fill="#FF983C" opacity="0.46"/>
+<rect x="1097.00" y="46.00" width="8.00" height="45.00" rx="0" fill="#FF983C" opacity="0.54"/>
+<rect x="1112.00" y="60.00" width="8.00" height="31.00" rx="0" fill="#FF983C" opacity="0.62"/>
+<rect x="1127.00" y="48.00" width="8.00" height="43.00" rx="0" fill="#FF983C" opacity="0.70"/>
+<rect x="1142.00" y="80.00" width="8.00" height="11.00" rx="0" fill="#FF983C" opacity="0.78"/>
+<rect width="1200" height="155" fill="url(#scan)" opacity=".12" pointer-events="none"/>
+</svg>

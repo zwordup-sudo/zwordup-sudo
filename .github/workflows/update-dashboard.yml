@@ -1,0 +1,38 @@
+name: Refresh DOLENT activity dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 10 * * *'  # 10:17 UTC, diario; Github puede retrasar ejecuciones
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dolent-profile-artifacts
+  cancel-in-progress: false
+
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v4
+
+      - name: Render modular dashboard with real GitHub contributions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_LOGIN: zwordup-sudo
+        run: python3 scripts/render_dashboard.py
+
+      - name: Commit changed SVG panels only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/header.svg assets/project-fryd.svg assets/project-hercules.svg assets/terrain.svg assets/activity.svg
+          if ! git diff --cached --quiet; then
+            git commit -m 'chore: update modular dashboard (real GitHub activity)'
+            git push
+          else
+            echo 'No dashboard changes'
+          fi
