@@ -1,4 +1,3 @@
-
 name: Refresh DOLENT activity dashboard
 
 on:
@@ -9,27 +8,56 @@ on:
 permissions:
   contents: write
 
+# Prevent two dashboard updates from publishing simultaneously.
+concurrency:
+  group: dolent-dashboard-main
+  cancel-in-progress: false
+
 jobs:
   dashboard:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout profile repository
+      - name: Checkout latest profile branch
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
-      - name: Generate real contribution visualization
+      - name: Regenerate dashboard and push safely
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_LOGIN: zwordup-sudo
-        run: python3 scripts/render_dashboard.py
-
-      - name: Commit graphic when changed
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/dashboard.svg
-          if ! git diff --cached --quiet; then
-            git commit -m 'chore: refresh activity dashboard'
-            git push
-          else
-            echo 'Graphic is already up to date.'
-          fi
+
+          for attempt in 1 2 3; do
+            echo "Publishing attempt $attempt/3"
+
+            # Discard only this temporary runner's files, then use latest main.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Works for both V1 (dashboard.svg) and V2 (modular SVG files).
+            python3 scripts/render_dashboard.py
+            git add -- assets/*.svg
+
+            if git diff --cached --quiet; then
+              echo 'Dashboard already up to date.'
+              exit 0
+            fi
+
+            git commit -m 'chore: refresh DOLENT dashboard'
+            if git push origin HEAD:main; then
+              echo 'Dashboard published successfully.'
+              exit 0
+            fi
+
+            echo 'Remote changed during publication; retrying from latest main.'
+            sleep 3
+          done
+
+          echo 'Could not publish after 3 attempts.' >&2
+          exit 1
