@@ -1,13 +1,27 @@
-<!-- DOLENT / Developer dashboard; activity graphic is auto-updated -->
-
-![DOLENT // CONTROL SYSTEM — Dashboard con relieve de actividad y mapa de contribuciones](assets/dashboard.svg)
+<!-- DOLENT / Modular README V2. Each panel is a standalone SVG. -->
 
 <p align="center">
-  <a href="https://github.com/zwordup-sudo/FRYD"><b>01 // FRYD · AI Productivity System</b></a>
-  &nbsp; | &nbsp;
-  <b>02 // HERCULES · Android Fitness App (local)</b>
+  <img src="assets/header.svg" width="100%" alt="DOLENT — Developer / AI / Mobile engineering" />
 </p>
 
-<p align="center"><code>AI systems</code> &nbsp; <code>Android</code> &nbsp; <code>Productivity</code> &nbsp; <code>Automation</code></p>
+<p align="center">
+  <a href="https://github.com/zwordup-sudo/FRYD" title="Abrir FRYD">
+    <img src="assets/project-fryd.svg" width="100%" alt="FRYD — AI Productivity System" />
+  </a>
+</p>
 
-<p align="center"><sub>STATUS: ONLINE · Activity graphic updated through GitHub Actions</sub></p>
+<p align="center">
+  <img src="assets/project-hercules.svg" width="100%" alt="HERCULES — Android Fitness Project, not yet published" />
+</p>
+
+<p align="center">
+  <img src="assets/terrain.svg" width="100%" alt="Representación topográfica estilizada de la actividad semanal en GitHub" />
+</p>
+
+<p align="center">
+  <img src="assets/activity.svg" width="100%" alt="Mapa de calor de contribuciones y estadísticas de GitHub" />
+</p>
+
+<p align="center">
+  <sub>END OF TRANSMISSION // SYS_READY_ — Actualizado con GitHub Actions</sub>
+</p>

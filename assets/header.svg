@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 275" width="1200" height="275" role="img" aria-label="DOLENT developer profile hero and system identity">
+<defs>
+          <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0C1B29"/><stop offset=".57" stop-color="#080D16"/><stop offset="1" stop-color="#100E1D"/></linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17E0E7"/><stop offset=".65" stop-color="#153A63"/><stop offset="1" stop-color="#102734"/></linearGradient>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#254457" stroke-opacity=".28" fill="none" stroke-width=".7"/></pattern>
+          <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 2.4H1200" stroke="#000" stroke-opacity=".35" stroke-width=".4"/></pattern>
+          <radialGradient id="aura"><stop stop-color="#20D6E9" stop-opacity=".27"/><stop offset="1" stop-color="#20D6E9" stop-opacity="0"/></radialGradient>
+        </defs>
+<rect x="0.00" y="0.00" width="1200.00" height="275.00" rx="0" fill="url(#back)" />
+<rect x="1.50" y="1.50" width="1197.00" height="272.00" rx="14" fill="none" stroke="#263D50" stroke-width="1.7" />
+<line x1="28.00" y1="15.00" x2="102.00" y2="15.00" stroke="#22DDEA" stroke-width="2" opacity="1"/>
+<line x1="1072.00" y1="260.00" x2="1172.00" y2="260.00" stroke="#B176FF" stroke-width="2" opacity="1"/>
+<rect x="24.00" y="24.00" width="266.00" height="226.00" rx="9" fill="#081824" stroke="#263D50" stroke-width="1.3" />
+<rect x="33.00" y="33.00" width="248.00" height="208.00" rx="0" fill="url(#grid)" />
+<circle cx="157.00" cy="127.00" r="80.00" fill="url(#sky)" stroke="#22DDEA" stroke-width="1.2" />
+<circle cx="157.00" cy="127.00" r="95.00" fill="none" stroke="#266276" stroke-width="1" />
+<circle cx="157.00" cy="127.00" r="105.00" fill="none" stroke="#244B5C" stroke-width="0.8" />
+<path d="M78 72 Q152 92 237 69" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<path d="M80 92 Q152 112 235 89" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<path d="M82 112 Q152 132 233 109" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<path d="M84 132 Q152 152 231 129" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<path d="M86 152 Q152 172 229 149" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<path d="M88 172 Q152 192 227 169" fill="none" stroke="#22DDEA" stroke-width="0.7" opacity="0.24" />
+<polygon points="38.00,230.00 81.00,182.00 110.00,199.00 139.00,142.00 158.00,162.00 199.00,109.00 229.00,170.00 259.00,150.00 278.00,228.00" fill="#102739" stroke="#2199B7" stroke-width="1.5"/>
+<path d="M42 231 L82 185 L108 204 L139 149 L157 168 L201 115 L229 178 L258 154 L276 228" fill="none" stroke="#FF983C" stroke-width="2.3" opacity="0.85" />
+<line x1="64.00" y1="56.00" x2="74.00" y2="56.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="69.00" y1="51.00" x2="69.00" y2="61.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="237.00" y1="62.00" x2="247.00" y2="62.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="242.00" y1="57.00" x2="242.00" y2="67.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="255.00" y1="206.00" x2="265.00" y2="206.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="260.00" y1="201.00" x2="260.00" y2="211.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="46.00" y1="103.00" x2="56.00" y2="103.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="51.00" y1="98.00" x2="51.00" y2="108.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="180.00" y1="46.00" x2="190.00" y2="46.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<line x1="185.00" y1="41.00" x2="185.00" y2="51.00" stroke="#22DDEA" stroke-width="0.8" opacity="0.6"/>
+<text x="322.00" y="58.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="19" font-weight="600" fill="#22DDEA" >SYSTEM IDENTITY  /  001</text>
+<text x="315.00" y="139.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="77" font-weight="700" fill="#EEF6F9" >DOLENT_</text>
+<text x="323.00" y="174.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="20" font-weight="500" fill="#A6BED0" >DEVELOPER  /  AI SYSTEMS  /  MOBILE ENGINEERING</text>
+<line x1="323.00" y1="200.00" x2="1153.00" y2="200.00" stroke="#263D50" stroke-width="1" opacity="1"/>
+<rect x="325.00" y="214.00" width="158.00" height="30.00" rx="6" fill="#12212D" stroke="#FBE24D" stroke-width="0.9" />
+<text x="404.00" y="235.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="700" fill="#FBE24D" text-anchor="middle">PYTHON</text>
+<rect x="503.00" y="214.00" width="158.00" height="30.00" rx="6" fill="#12212D" stroke="#B176FF" stroke-width="0.9" />
+<text x="582.00" y="235.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="700" fill="#B176FF" text-anchor="middle">KOTLIN</text>
+<rect x="681.00" y="214.00" width="168.00" height="30.00" rx="6" fill="#12212D" stroke="#22DDEA" stroke-width="0.9" />
+<text x="765.00" y="235.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="700" fill="#22DDEA" text-anchor="middle">TYPESCRIPT</text>
+<rect x="859.00" y="214.00" width="158.00" height="30.00" rx="6" fill="#12212D" stroke="#24E78F" stroke-width="0.9" />
+<text x="938.00" y="235.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="700" fill="#24E78F" text-anchor="middle">AI AGENTS</text>
+<circle cx="1080.00" cy="74.00" r="7.00" fill="#24E78F" stroke="none" stroke-width="1" />
+<text x="1100.00" y="80.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="19" font-weight="700" fill="#24E78F" >ONLINE</text>
+<text x="1139.00" y="171.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="400" fill="#668397" text-anchor="end">SESSION 001</text>
+<rect width="1200" height="275" fill="url(#scan)" opacity=".12" pointer-events="none"/>
+</svg>

@@ -1,0 +1,425 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 346" width="1200" height="346" role="img" aria-label="GitHub activity statistics and 12-month contribution heatmap">
+<defs>
+          <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0C1B29"/><stop offset=".57" stop-color="#080D16"/><stop offset="1" stop-color="#100E1D"/></linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17E0E7"/><stop offset=".65" stop-color="#153A63"/><stop offset="1" stop-color="#102734"/></linearGradient>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#254457" stroke-opacity=".28" fill="none" stroke-width=".7"/></pattern>
+          <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 2.4H1200" stroke="#000" stroke-opacity=".35" stroke-width=".4"/></pattern>
+          <radialGradient id="aura"><stop stop-color="#20D6E9" stop-opacity=".27"/><stop offset="1" stop-color="#20D6E9" stop-opacity="0"/></radialGradient>
+        </defs>
+<rect x="0.00" y="0.00" width="1200.00" height="346.00" rx="0" fill="url(#back)" />
+<rect x="1.50" y="1.50" width="1197.00" height="343.00" rx="14" fill="none" stroke="#263D50" stroke-width="1.7" />
+<line x1="28.00" y1="15.00" x2="102.00" y2="15.00" stroke="#22DDEA" stroke-width="2" opacity="1"/>
+<line x1="1072.00" y1="331.00" x2="1172.00" y2="331.00" stroke="#B176FF" stroke-width="2" opacity="1"/>
+<text x="30.00" y="43.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="21" font-weight="700" fill="#EEF6F9" >04  //  CONTRIBUTION MAP</text>
+<text x="1168.00" y="43.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="14" font-weight="400" fill="#A6BED0" text-anchor="end">PREVIEW / SYNTHETIC DATA</text>
+<line x1="30.00" y1="57.00" x2="1170.00" y2="57.00" stroke="#263D50" stroke-width="1" opacity="1"/>
+<rect x="26.00" y="75.00" width="245.00" height="245.00" rx="10" fill="#0B1420" stroke="#263D50" stroke-width="1.1" />
+<path d="M39 103 V88 H139" fill="none" stroke="#B176FF" stroke-width="2" opacity="1" />
+<line x1="188.00" y1="89.00" x2="257.00" y2="89.00" stroke="#B176FF" stroke-width="1.2" opacity="0.65"/>
+<text x="44.00" y="114.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="400" fill="#A6BED0" >TOTAL CONTRIB.</text>
+<text x="44.00" y="151.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#24E78F" >960</text>
+<line x1="42.00" y1="165.00" x2="250.00" y2="165.00" stroke="#263D50" stroke-width="1" opacity="1"/>
+<text x="44.00" y="186.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="400" fill="#A6BED0" >ACTIVE DAYS</text>
+<text x="44.00" y="223.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#FF983C" >238</text>
+<line x1="42.00" y1="237.00" x2="250.00" y2="237.00" stroke="#263D50" stroke-width="1" opacity="1"/>
+<text x="44.00" y="258.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="15" font-weight="400" fill="#A6BED0" >PUBLIC REPOS</text>
+<text x="44.00" y="295.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="33" font-weight="700" fill="#B176FF" >2</text>
+<rect x="287.00" y="75.00" width="887.00" height="245.00" rx="10" fill="#0B1420" stroke="#263D50" stroke-width="1.1" />
+<path d="M300 103 V88 H400" fill="none" stroke="#22DDEA" stroke-width="2" opacity="1" />
+<line x1="1091.00" y1="89.00" x2="1160.00" y2="89.00" stroke="#22DDEA" stroke-width="1.2" opacity="0.65"/>
+<text x="309.00" y="111.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="17" font-weight="700" fill="#EEF6F9" >CONTRIBUTION INTENSITY</text>
+<text x="964.00" y="111.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="14" font-weight="400" fill="#668397" >LOW</text>
+<rect x="1015.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#1F5464" />
+<rect x="1027.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#24A9C5" />
+<rect x="1039.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#24A9C5" />
+<rect x="1051.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#0AB9B7" />
+<rect x="1063.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#24E78F" />
+<rect x="1075.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#C2EF48" />
+<rect x="1087.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#FBE24D" />
+<rect x="1099.00" y="98.00" width="10.00" height="12.00" rx="2" fill="#FF5367" />
+<text x="1161.00" y="111.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="14" font-weight="400" fill="#A6BED0" text-anchor="end">HIGH</text>
+<text x="332.00" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >NOV</text>
+<rect x="332.00" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="332.00" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="347.28" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="347.28" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="347.28" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="347.28" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="347.28" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="347.28" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="347.28" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="362.56" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="362.56" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="362.56" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="362.56" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="362.56" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="362.56" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="362.56" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="377.83" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="377.83" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="377.83" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="377.83" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="377.83" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="377.83" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="377.83" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<text x="393.11" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >DEC</text>
+<rect x="393.11" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="393.11" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="393.11" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="393.11" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="393.11" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="393.11" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="393.11" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="408.39" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="408.39" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="408.39" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="408.39" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="408.39" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="408.39" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="408.39" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="423.67" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="423.67" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="423.67" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="423.67" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="423.67" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="423.67" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="423.67" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="438.94" y="167.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="438.94" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="438.94" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="438.94" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="438.94" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="438.94" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="438.94" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<text x="454.22" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >JAN</text>
+<rect x="454.22" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="454.22" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="454.22" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="454.22" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="454.22" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="454.22" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="454.22" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="469.50" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="469.50" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="469.50" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="469.50" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="469.50" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="469.50" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="469.50" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="484.78" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="484.78" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="500.06" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="500.06" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="500.06" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="500.06" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="500.06" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="500.06" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="500.06" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<text x="515.33" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >FEB</text>
+<rect x="515.33" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="515.33" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="515.33" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="515.33" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="515.33" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="515.33" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="515.33" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="530.61" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="530.61" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="530.61" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="530.61" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="530.61" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="530.61" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="530.61" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="545.89" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="545.89" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="545.89" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="545.89" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="545.89" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="545.89" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="545.89" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="561.17" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="561.17" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="561.17" y="205.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="561.17" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="561.17" y="243.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="561.17" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="561.17" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<text x="576.44" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >MAR</text>
+<rect x="576.44" y="167.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="576.44" y="186.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="576.44" y="205.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="576.44" y="224.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="576.44" y="243.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="576.44" y="262.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="576.44" y="281.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="591.72" y="167.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="591.72" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="591.72" y="205.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="591.72" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="591.72" y="243.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="591.72" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="591.72" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="607.00" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="607.00" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="622.28" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="622.28" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="622.28" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="622.28" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="622.28" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="622.28" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="622.28" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="637.56" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="637.56" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="637.56" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="637.56" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="637.56" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="637.56" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="637.56" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<text x="652.83" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >APR</text>
+<rect x="652.83" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="652.83" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="652.83" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="652.83" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="652.83" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="652.83" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="652.83" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="668.11" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="668.11" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="668.11" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="668.11" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="668.11" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="668.11" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="668.11" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="683.39" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="683.39" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="683.39" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="683.39" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="683.39" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="683.39" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="683.39" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="698.67" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="698.67" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="698.67" y="205.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="698.67" y="224.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="698.67" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="698.67" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="698.67" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<text x="713.94" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >MAY</text>
+<rect x="713.94" y="167.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="713.94" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="713.94" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="713.94" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="713.94" y="243.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="713.94" y="262.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="713.94" y="281.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="729.22" y="167.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="729.22" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="729.22" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="729.22" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="729.22" y="243.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="729.22" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="729.22" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="744.50" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="744.50" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="759.78" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="759.78" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="775.06" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="775.06" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="775.06" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="775.06" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="775.06" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="775.06" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="775.06" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<text x="790.33" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >JUN</text>
+<rect x="790.33" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="790.33" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="790.33" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="790.33" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="790.33" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="790.33" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="790.33" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="805.61" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="820.89" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="820.89" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="820.89" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="820.89" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="820.89" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="820.89" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="820.89" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="836.17" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="836.17" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<text x="851.44" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >JUL</text>
+<rect x="851.44" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="851.44" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="851.44" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="851.44" y="224.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="851.44" y="243.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="851.44" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="851.44" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="866.72" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="866.72" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="866.72" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="866.72" y="224.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="866.72" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="866.72" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="866.72" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="882.00" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="882.00" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="882.00" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="882.00" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="882.00" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="882.00" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="882.00" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="897.28" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="897.28" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<text x="912.56" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >AUG</text>
+<rect x="912.56" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="912.56" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="912.56" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="912.56" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="912.56" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="912.56" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="912.56" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="927.83" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="927.83" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="927.83" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="927.83" y="224.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="927.83" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="927.83" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="927.83" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="943.11" y="167.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="943.11" y="186.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="943.11" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="943.11" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="943.11" y="243.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="943.11" y="262.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="943.11" y="281.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="167.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="243.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="262.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="958.39" y="281.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="973.67" y="167.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="973.67" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="973.67" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="973.67" y="224.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="973.67" y="243.00" width="12.28" height="13.00" rx="2" fill="#FF5367" />
+<rect x="973.67" y="262.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="973.67" y="281.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<text x="988.94" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >SEP</text>
+<rect x="988.94" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="988.94" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="988.94" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="988.94" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="988.94" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="988.94" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="988.94" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1004.22" y="167.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1004.22" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1004.22" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1004.22" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1004.22" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1004.22" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1004.22" y="281.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1019.50" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1019.50" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1019.50" y="205.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1019.50" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1019.50" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1019.50" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1019.50" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1034.78" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1034.78" y="186.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1034.78" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1034.78" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1034.78" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1034.78" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1034.78" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<text x="1050.06" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >OCT</text>
+<rect x="1050.06" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1050.06" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1050.06" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1050.06" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1050.06" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1050.06" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1050.06" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1065.33" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1065.33" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1065.33" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1065.33" y="224.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1065.33" y="243.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1065.33" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1065.33" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1080.61" y="167.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="1080.61" y="186.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="1080.61" y="205.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="1080.61" y="224.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="1080.61" y="243.00" width="12.28" height="13.00" rx="2" fill="#FBE24D" />
+<rect x="1080.61" y="262.00" width="12.28" height="13.00" rx="2" fill="#FF983C" />
+<rect x="1080.61" y="281.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="167.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="186.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="205.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="224.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="243.00" width="12.28" height="13.00" rx="2" fill="#C2EF48" />
+<rect x="1095.89" y="262.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1095.89" y="281.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<text x="1111.17" y="150.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >NOV</text>
+<rect x="1111.17" y="167.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1111.17" y="186.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1111.17" y="205.00" width="12.28" height="13.00" rx="2" fill="#24E78F" />
+<rect x="1111.17" y="224.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1111.17" y="243.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1111.17" y="262.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1111.17" y="281.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1126.44" y="167.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1126.44" y="186.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1126.44" y="205.00" width="12.28" height="13.00" rx="2" fill="#122B3A" />
+<rect x="1126.44" y="224.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1126.44" y="243.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<rect x="1126.44" y="262.00" width="12.28" height="13.00" rx="2" fill="#0AB9B7" />
+<text x="302.00" y="178.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="12" font-weight="400" fill="#668397" >SUN</text>
+<text x="302.00" y="216.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="12" font-weight="400" fill="#668397" >TUE</text>
+<text x="302.00" y="254.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="12" font-weight="400" fill="#668397" >THU</text>
+<text x="302.00" y="292.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="12" font-weight="400" fill="#668397" >SAT</text>
+<text x="309.00" y="306.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="13" font-weight="400" fill="#A6BED0" >RED = HIGHER ACTIVITY · NOT A WARNING</text>
+<rect width="1200" height="346" fill="url(#scan)" opacity=".12" pointer-events="none"/>
+</svg>

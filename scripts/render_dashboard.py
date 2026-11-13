@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
-"""Render DOLENT's GitHub README dashboard with standard-library Python only.
+"""DOLENT profile V2: five independent SVG panels.
 
-Usage:
-  python scripts/render_dashboard.py --demo
-  GITHUB_TOKEN=... python scripts/render_dashboard.py
-
-The demo is intentionally labeled PREVIEW / SYNTHETIC DATA.
-GitHub Actions fetches real public contribution data via GraphQL.
+No pip dependencies. GitHub Actions fetches public profile contribution data.
+For a local offline sample: python scripts/render_dashboard.py --demo
+Demo output is clearly watermarked and must not be treated as real statistics.
 """
 from __future__ import annotations
 
@@ -21,39 +18,37 @@ import random
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'assets' / 'dashboard.svg'
+ASSETS = ROOT / 'assets'
 LOGIN = os.getenv('GITHUB_LOGIN', 'zwordup-sudo')
-WIDTH, HEIGHT = 1440, 1010
+W = 1200
 FONT = '"DejaVu Sans Mono", "Liberation Mono", monospace'
 C = {
- 'bg':'#080C12', 'panel':'#0B111A', 'panel2':'#0C1420', 'border':'#284255',
- 'line':'#193344', 'white':'#E4F3F4', 'soft':'#8BA6B5', 'muted':'#5A7785',
- 'cyan':'#35E4EC', 'blue':'#398CD9', 'green':'#33E58E', 'lime':'#B1F044',
- 'yellow':'#FFD33E', 'orange':'#FF993F', 'red':'#FF4F62', 'purple':'#BD6EFF',
+    'bg':'#080D16','panel':'#0B1420','panel2':'#0D1925','border':'#263D50',
+    'line':'#173046','white':'#EEF6F9','soft':'#A6BED0','dim':'#668397',
+    'cyan':'#22DDEA','teal':'#0AB9B7','green':'#24E78F','lime':'#C2EF48',
+    'yellow':'#FBE24D','orange':'#FF983C','red':'#FF5367','purple':'#B176FF',
 }
 
 
 def demo_data():
-    rng = random.Random(2411)
+    rng = random.Random(8231)
     today = date.today()
     start = today-timedelta(days=364)
-    start -= timedelta(days=(start.weekday()+1)%7)
-    end = today
     days=[]
-    for i in range((end-start).days+1):
-        d=start+timedelta(days=i)
-        wave=math.sin((i-35)/30)**2 + .8*math.sin((i+54)/49)**2
-        bursts=sum(max(0, 1-abs(i-pos)/13)*peak for pos,peak in [(62,8),(135,10),(213,15),(279,7),(326,17),(355,6)])
-        n=max(0, round((rng.random()-0.55)*6 + wave*.9 + bursts*.85))
-        days.append({'date':d.isoformat(), 'contributionCount':n})
-    return {'days':days,'total':sum(x['contributionCount'] for x in days), 'repos':1,'demo':True}
+    for k in range(365):
+        d=start+timedelta(days=k)
+        wave=0.6*math.sin(k/19)**2
+        hills=sum(max(0,1-abs(k-c)/16)*h for c,h in [(45,4),(113,9),(176,12),(237,5),(285,17),(342,8)])
+        n=max(0, round((rng.random()-.53)*4+wave+hills))
+        days.append({'date':d.isoformat(),'contributionCount':n})
+    return {'days':days,'total':sum(d['contributionCount'] for d in days),'repos':2,'demo':True}
 
 
 def github_data():
-    token=os.getenv('GITHUB_TOKEN') or os.getenv('GH_TOKEN')
+    token=os.environ.get('GITHUB_TOKEN') or os.environ.get('GH_TOKEN')
     if not token:
-        raise RuntimeError('Missing GITHUB_TOKEN; use --demo for a labeled preview.')
-    query = '''query($login: String!) {
+        raise RuntimeError('Missing GITHUB_TOKEN; run --demo only for a labeled sample.')
+    query='''query($login: String!) {
       user(login: $login) {
         contributionsCollection {
           contributionCalendar {
@@ -66,287 +61,303 @@ def github_data():
         }
       }
     }'''
-    payload=json.dumps({'query':query,'variables':{'login':LOGIN}}).encode()
-    req=urllib.request.Request('https://api.github.com/graphql', data=payload, headers={
-        'Authorization':f'Bearer {token}', 'Content-Type':'application/json',
-        'Accept':'application/vnd.github+json', 'User-Agent':'dolent-profile-dashboard',
-    }, method='POST')
-    with urllib.request.urlopen(req,timeout=30) as res:
-        response=json.load(res)
-    if 'errors' in response:
-        raise RuntimeError('GitHub GraphQL error: '+str(response['errors']))
-    user=response.get('data',{}).get('user')
-    if user is None:
-        raise RuntimeError(f'GitHub user not found: {LOGIN}')
-    cal=user['contributionsCollection']['contributionCalendar']
-    days=[d for w in cal['weeks'] for d in w['contributionDays']]
-    return {'days':days, 'total':cal['totalContributions'], 'repos':user['repositories']['totalCount'],'demo':False}
+    body=json.dumps({'query':query,'variables':{'login':LOGIN}}).encode('utf-8')
+    req=urllib.request.Request('https://api.github.com/graphql',body,{
+        'Authorization':f'Bearer {token}',
+        'Content-Type':'application/json',
+        'Accept':'application/vnd.github+json',
+        'User-Agent':'dolent-modular-readme',
+    },method='POST')
+    with urllib.request.urlopen(req,timeout=30) as response:
+        payload=json.load(response)
+    if payload.get('errors'):
+        raise RuntimeError('GitHub GraphQL: '+str(payload['errors']))
+    u=(payload.get('data') or {}).get('user')
+    if not u:
+        raise RuntimeError(f'No GitHub profile found for: {LOGIN}')
+    cal=u['contributionsCollection']['contributionCalendar']
+    days=[d for wk in cal['weeks'] for d in wk['contributionDays']]
+    return {'days':days,'total':cal['totalContributions'],
+            'repos':u['repositories']['totalCount'],'demo':False}
 
-
-def xmltext(t): return escape(str(t), quote=False)
 
 class SVG:
-    def __init__(self):self.parts=[]
-    def add(self,s):self.parts.append(s)
+    def __init__(self,height,desc):
+        self.h=height
+        self.s=[f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {height}" width="{W}" height="{height}" role="img" aria-label="{escape(desc,quote=True)}">']
+        self.add('''<defs>
+          <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0C1B29"/><stop offset=".57" stop-color="#080D16"/><stop offset="1" stop-color="#100E1D"/></linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17E0E7"/><stop offset=".65" stop-color="#153A63"/><stop offset="1" stop-color="#102734"/></linearGradient>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" stroke="#254457" stroke-opacity=".28" fill="none" stroke-width=".7"/></pattern>
+          <pattern id="scan" width="3" height="3" patternUnits="userSpaceOnUse"><path d="M0 2.4H1200" stroke="#000" stroke-opacity=".35" stroke-width=".4"/></pattern>
+          <radialGradient id="aura"><stop stop-color="#20D6E9" stop-opacity=".27"/><stop offset="1" stop-color="#20D6E9" stop-opacity="0"/></radialGradient>
+        </defs>''')
+        self.rect(0,0,W,height,'url(#back)')
+        self.rect(1.5,1.5,W-3,height-3,'none',C['border'],1.7,14)
+        self.line(28,15,102,15,C['cyan'],2)
+        self.line(W-128,height-15,W-28,height-15,C['purple'],2)
+    def add(self,x): self.s.append(x)
     def rect(self,x,y,w,h,fill='none',stroke=None,sw=1,r=0,extra=''):
-        self.add(f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{r}" fill="{fill}"'+(f' stroke="{stroke}" stroke-width="{sw}"' if stroke else '')+f' {extra}/>')
-    def line(self,x1,y1,x2,y2,stroke,sw=1,opacity=1,dash=''):
-        self.add(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{stroke}" stroke-width="{sw}" opacity="{opacity}"'+(f' stroke-dasharray="{dash}"' if dash else '')+'/>')
-    def path(self,d,stroke,sw=1,fill='none',opacity=1,extra=''):
-        self.add(f'<path d="{d}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" opacity="{opacity}" {extra}/>')
-    def circle(self,x,y,r,fill,stroke='none',sw=1,extra=''):
-        self.add(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" {extra}/>')
-    def text(self,x,y,s,size=16,color=None,weight=400,extra=''):
-        self.add(f'<text x="{x:.1f}" y="{y:.1f}" font-size="{size}" font-weight="{weight}" fill="{color or C["white"]}" {extra}>{xmltext(s)}</text>')
-    def polygon(self,pts,fill,stroke='none',sw=1,extra=''):
-        self.add('<polygon points="'+' '.join(f'{x:.1f},{y:.1f}' for x,y in pts)+f'" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" {extra}/>')
-    def panel(self,x,y,w,h,accent=None,shade=None):
-        self.rect(x,y,w,h,shade or C['panel'],C['border'],1.3,13)
-        if accent:
-            self.path(f'M{x+12} {y+28} L{x+12} {y+13} Q{x+12} {y+12} {x+27} {y+12} L{x+106} {y+12}',accent,1.7)
-            self.line(x+14,y+h-13,x+57,y+h-13,accent,1.3,.8)
-        self.line(x+w-20,y+16,x+w-20,y+34,accent or C['border'],1,0.7)
-        self.line(x+w-28,y+17,x+w-12,y+17,accent or C['border'],1,0.7)
-    def label(self,x,y,s,color=None):self.text(x,y,s,15,color or C['white'],600)
+        self.add(f'<rect x="{x:.2f}" y="{y:.2f}" width="{w:.2f}" height="{h:.2f}" rx="{r}" fill="{fill}"'+(f' stroke="{stroke}" stroke-width="{sw}"' if stroke else '')+f' {extra}/>')
+    def line(self,x1,y1,x2,y2,color,sw=1,alpha=1,dash=''):
+        self.add(f'<line x1="{x1:.2f}" y1="{y1:.2f}" x2="{x2:.2f}" y2="{y2:.2f}" stroke="{color}" stroke-width="{sw}" opacity="{alpha}"'+(f' stroke-dasharray="{dash}"' if dash else '')+'/>')
+    def path(self,d,color,sw=1,fill='none',alpha=1,extra=''):
+        self.add(f'<path d="{d}" fill="{fill}" stroke="{color}" stroke-width="{sw}" opacity="{alpha}" {extra}/>')
+    def circle(self,x,y,r,fill='none',stroke='none',sw=1,extra=''):
+        self.add(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{r:.2f}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}" {extra}/>')
+    def text(self,x,y,t,size=20,color=None,weight=400,extra=''):
+        self.add(f'<text x="{x:.2f}" y="{y:.2f}" font-family={repr(FONT)} font-size="{size}" font-weight="{weight}" fill="{color or C["white"]}" {extra}>{escape(str(t),quote=False)}</text>')
+    def poly(self,coords,fill,stroke='none',sw=1):
+        points=' '.join(f'{x:.2f},{y:.2f}' for x,y in coords)
+        self.add(f'<polygon points="{points}" fill="{fill}" stroke="{stroke}" stroke-width="{sw}"/>')
+    def pane(self,x,y,w,h,accent=C['cyan']):
+        self.rect(x,y,w,h,C['panel'],C['border'],1.1,10)
+        self.path(f'M{x+13} {y+28} V{y+13} H{x+113}',accent,2)
+        self.line(x+w-83,y+14,x+w-14,y+14,accent,1.2,.65)
+    def save(self,name,demo=False):
+        if demo:
+            self.rect(W-251,26,210,29,'#421F25',C['orange'],1,5)
+            self.text(W-238,47,'DEMO / SAMPLE DATA',15,C['yellow'],700)
+        self.add(f'<rect width="{W}" height="{self.h}" fill="url(#scan)" opacity=".12" pointer-events="none"/>')
+        self.add('</svg>')
+        dest=ASSETS/name
+        dest.write_text('\n'.join(self.s),encoding='utf-8')
+        print(f'Wrote {dest.name} ({dest.stat().st_size:,} bytes)')
+
+
+def title(s,label,subtitle=''):
+    s.text(30,43,label,21,C['white'],700)
+    if subtitle:s.text(1168,43,subtitle,14,C['soft'],400,'text-anchor="end"')
+    s.line(30,57,1170,57,C['border'],1)
+
+
+def render_header(demo):
+    s=SVG(275,'DOLENT developer profile hero and system identity')
+    s.rect(24,24,266,226,'#081824',C['border'],1.3,9)
+    s.rect(33,33,248,208,'url(#grid)')
+    s.circle(157,127,80,'url(#sky)',C['cyan'],1.2)
+    s.circle(157,127,95,'none','#266276',1)
+    s.circle(157,127,105,'none','#244B5C',.8)
+    for i in range(6):
+        y=72+20*i
+        s.path(f'M{78+i*2} {y} Q{152} {y+20} {237-i*2} {y-3}',C['cyan'],.7,alpha=.24)
+    s.poly([(38,230),(81,182),(110,199),(139,142),(158,162),(199,109),(229,170),(259,150),(278,228)],'#102739','#2199B7',1.5)
+    s.path('M42 231 L82 185 L108 204 L139 149 L157 168 L201 115 L229 178 L258 154 L276 228',C['orange'],2.3,alpha=.85)
+    for x,y in [(69,56),(242,62),(260,206),(51,103),(185,46)]:
+        s.line(x-5,y,x+5,y,C['cyan'],.8,.6);s.line(x,y-5,x,y+5,C['cyan'],.8,.6)
+    s.text(322,58,'SYSTEM IDENTITY  /  001',19,C['cyan'],600)
+    s.text(315,139,'DOLENT_',77,C['white'],700)
+    s.text(323,174,'DEVELOPER  /  AI SYSTEMS  /  MOBILE ENGINEERING',20,C['soft'],500)
+    s.line(323,200,1153,200,C['border'],1)
+    for idx,(v,col) in enumerate([('PYTHON',C['yellow']),('KOTLIN',C['purple']),('TYPESCRIPT',C['cyan']),('AI AGENTS',C['green'])]):
+        x=325+idx*178
+        w=158 if idx!=2 else 168
+        s.rect(x,214,w,30,'#12212D',col,.9,6)
+        s.text(x+w/2,235,v,15,col,700,'text-anchor="middle"')
+    s.circle(1080,74,7,C['green'])
+    s.text(1100,80,'ONLINE',19,C['green'],700)
+    s.text(1139,171,'SESSION 001',15,C['dim'],400,'text-anchor="end"')
+    s.save('header.svg',False)
+
+
+def render_project(name,tagline,stack,number,color,status,mark):
+    s=SVG(155,f'DOLENT project archive {number}: {name}')
+    s.rect(18,18,1164,119,C['panel'],C['border'],1.1,10)
+    s.rect(32,34,94,85,'#11212D',color,1,7)
+    s.text(79,93,mark,56,color,700,'text-anchor="middle"')
+    s.text(156,50,f'0{number}  //  PROJECT ARCHIVE',17,color,700)
+    s.text(153,88,name,39,C['white'],700)
+    s.text(153,115,tagline,19,C['soft'])
+    s.circle(963,53,5,color)
+    s.text(981,60,status,17,color,700)
+    s.text(1143,116,stack,17,C['dim'],500,'text-anchor="end"')
+    for i in range(7):
+        bh=11+(i*i*13+number*11)%35
+        s.rect(1052+i*15,91-bh,8,bh,color,extra=f'opacity="{.30+i*.08:.2f}"')
+    s.save('project-fryd.svg' if number==1 else 'project-hercules.svg')
 
 
 def clamp(v,a=0,b=1):return max(a,min(b,v))
 
-def color_for_count(n,ref):
-    if n<=0: return '#17313B'
-    t=clamp(n/max(1,ref))
-    if t < 0.14: return '#136F69'
-    if t < 0.30: return C['green']
-    if t < 0.50: return C['lime']
-    if t < 0.70: return C['yellow']
-    if t < 0.85: return C['orange']
+def ramp(t):
+    if t < .14: return '#1F5464'
+    if t < .29: return '#24A9C5'
+    if t < .44: return C['teal']
+    if t < .59: return C['green']
+    if t < .73: return C['lime']
+    if t < .86: return C['yellow']
+    if t < .95: return C['orange']
     return C['red']
 
 
-def gradient_chart_color(v):
-    if v<.11:return '#214E60'
-    if v<.26:return '#27A9C5'
-    if v<.43:return '#37E7C1'
-    if v<.60:return '#8CF05B'
-    if v<.72:return '#E8E44A'
-    if v<.85:return '#FFAB3B'
-    return '#FF5964'
+def heat_count(n,top):
+    if n<=0:return '#122B3A'
+    return ramp(.31+.69*clamp(n/max(1,top)))
 
 
-def contribution_days_map(data):
-    return {d['date']:max(0,int(d['contributionCount'])) for d in data['days']}
+def gather_weeks(data):
+    by_day={d['date']:int(d['contributionCount']) for d in data['days']}
+    dates=sorted(date.fromisoformat(x) for x in by_day)
+    if not dates:return [0]*53
+    sunday=dates[0]-timedelta(days=(dates[0].weekday()+1)%7)
+    weeks=[]
+    for wk in range(math.ceil((dates[-1]-sunday).days/7)+1):
+        wstart=sunday+timedelta(days=wk*7)
+        weeks.append(sum(by_day.get((wstart+timedelta(days=dd)).isoformat(),0) for dd in range(7)))
+    return weeks
 
 
-def build_svg(data):
-    s=SVG()
-    s.add(f'''<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}" role="img" aria-label="DOLENT developer dashboard with real GitHub contributions">
-<defs>
- <linearGradient id="back" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#09131B"/><stop offset="0.55" stop-color="#080C12"/><stop offset="1" stop-color="#120D1B"/></linearGradient>
- <linearGradient id="orb" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#53EAF0"/><stop offset="0.45" stop-color="#1B738D"/><stop offset="1" stop-color="#16343F"/></linearGradient>
- <radialGradient id="glow"><stop stop-color="#2CF6DF" stop-opacity=".27"/><stop offset="1" stop-color="#2CF6DF" stop-opacity="0"/></radialGradient>
- <pattern id="minorGrid" width="23" height="23" patternUnits="userSpaceOnUse"><path d="M23 0H0V23" fill="none" stroke="#244357" stroke-width="0.7" opacity=".31"/></pattern>
- <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 3.5H1440" stroke="#000" stroke-width=".7" opacity=".27"/></pattern>
- <clipPath id="terrainClip"><rect x="374" y="290" width="1046" height="402" rx="9"/></clipPath>
- </defs>
- <rect width="1440" height="1010" fill="url(#back)"/>
- <rect x="17" y="15" width="1406" height="980" rx="14" fill="none" stroke="#356478" stroke-width="1.2"/>
-''')
-    # top HUD
-    s.line(39,71,1400,71,C['border'],1.3)
-    s.text(45,49,'DOLENT // CONTROL SYSTEM',24,C['white'],700)
-    for i in range(6):s.polygon([(451+i*15,33),(459+i*15,33),(453+i*15,44),(445+i*15,44)],C['cyan'] if i<3 else '#245B66')
-    s.text(1022,45,'GITHUB NODE  //  SESSION 001',13,C['soft'])
-    s.circle(1365,39,5,C['green']); s.text(1381,45,'ON',13,C['green'],700)
-    # sidebar
-    s.panel(35,90,312,890,C['purple'])
-    s.panel(51,107,281,248,C['cyan'],'#08141A')
-    # stylized orbital landscape
-    s.circle(192,227,93,'url(#orb)',C['cyan'],1.1)
-    s.circle(192,227,103,'none','#1B5365',1)
-    for i in range(7):
-        yy=158+18*i
-        s.path(f'M{111+2*i} {yy} C175 {yy+10} 219 {yy-22} {276-2*i} {yy+4}',C['cyan'],.55,opacity=.45)
-    s.polygon([(57,329),(86,306),(101,320),(127,271),(149,287),(184,216),(198,234),(235,194),(272,254),(292,245),(327,330)],'#082C3A','#3CB7CF',1.6)
-    s.path('M56 330 L122 288 L143 298 L183 227 L200 246 L237 202 L271 260 L321 329',C['orange'],1.8,opacity=.9)
-    s.path('M72 332 L135 303 L184 242 L221 294 L258 273 L316 333',C['cyan'],1.1,opacity=.9)
-    for i in range(26):
-        x=65+(i*79)%249;y=123+(i*43)%195
-        s.circle(x,y,.8,C['white'],extra='opacity="0.55"')
-    s.label(57,393,'DOLENT_',C['white'])
-    s.text(57,413,'DEVELOPER / SYSTEM ARCHITECT',13,C['soft'])
-    s.text(57,432,'AI EXPLORER',13,C['soft'])
-    s.line(57,457,326,457,C['border'])
-    s.text(57,481,'ACCESS GRANTED  //  MX',12,C['green'])
-    s.text(57,520,'/// TECH STACK',16,C['white'],700)
-    icons=[('PY','#3DD8CD'),('KT',C['purple']),('TS',C['blue']),('FB',C['orange']),('AI',C['pink'] if 'pink' in C else C['purple']),('GH',C['white']),('DB',C['green']),('<>',C['cyan'])]
-    for j,(name,col) in enumerate(icons):
-        x=57+(j%4)*67;y=539+(j//4)*63
-        s.rect(x,y,52,53,'#0F1924','#2B4B5A',1,8)
-        s.rect(x+4,y+4,44,45,'none',col,.8,5)
-        s.text(x+26,y+32,name,16,col,700,'text-anchor="middle"')
-    s.line(57,675,326,675,C['border'])
-    s.text(57,700,'/// FOCUS',16,C['white'],700)
-    for i,(t,c) in enumerate([('AI SYSTEMS',C['cyan']),('MOBILE DEVELOPMENT',C['green']),('PRODUCTIVITY TOOLS',C['orange']),('AUTOMATION',C['purple'])]):
-        y=732+i*42
-        s.path(f'M65 {y-7} L72 {y} L65 {y+7}',c,1.8)
-        s.text(85,y+5,t,13,C['soft'])
-        s.line(57,y+17,326,y+17,C['line'],.75)
-    s.text(58,950,'NODE // ZWORDUP-SUDO',11,C['muted'])
-    # content title
-    s.text(378,105,'/// PROJECT ARCHIVE',17,C['white'],700)
-    s.line(605,100,1397,100,C['border'])
-    # project cards
-    for x,w,accent,idx,name,subtitle,status,tags in [
-        (375,510,C['cyan'],'01','FRYD','AI PRODUCTIVITY SYSTEM','IN DEVELOPMENT',['TypeScript','AI','Productivity']),
-        (898,521,C['orange'],'02','HERCULES','ANDROID TRAINING LOG','LOCAL / UNPUBLISHED',['Kotlin','Android','Fitness'])]:
-        s.panel(x,113,w,137,accent)
-        s.text(x+15,142,idx,15,accent,700)
-        s.rect(x+20,158,78,71,'#0D1A24',C['border'],1,7)
-        # unique emblem
-        if name=='FRYD':
-            s.polygon([(x+41,177),(x+59,188),(x+79,171),(x+68,199),(x+60,210),(x+53,195)],accent)
-        else:
-            s.polygon([(x+47,170),(x+55,170),(x+55,189),(x+72,189),(x+72,170),(x+81,170),(x+81,215),(x+72,215),(x+72,199),(x+55,199),(x+55,215),(x+47,215)],accent)
-        s.text(x+119,162,name,28,C['white'],700)
-        s.text(x+119,185,subtitle,14,C['soft'])
-        xpos=x+119
-        for tag in tags:
-            ww=len(tag)*7.5+19
-            s.rect(xpos,201,ww,24,'#10202B',C['border'],.8,5)
-            s.text(xpos+9,217,tag,11,accent)
-            xpos+=ww+7
-        s.circle(x+w-151,133,3,accent)
-        s.text(x+w-140,138,status,11,accent,600)
-    # large terrain container
-    s.panel(375,266,1044,439,C['cyan'])
-    s.text(394,293,'/// ACTIVITY TERRAIN',17,C['white'],700)
-    s.text(1149,293,'LAST 12 MONTHS',12,C['soft'])
-    s.rect(388,310,1018,379,'url(#minorGrid)')
-    # terrain orbital disk / background ticks
-    s.add('<g clip-path="url(#terrainClip)">')
-    s.add('<ellipse cx="906" cy="627" rx="463" ry="87" stroke="#4A7890" stroke-width="1.2" fill="#08141C" opacity=".85"/>')
-    for r in range(6):s.add(f'<ellipse cx="906" cy="627" rx="{140+r*63}" ry="{25+r*11}" stroke="#1B3C4C" stroke-width=".8" fill="none"/>')
-    for x in range(410,1410,44):s.line(x,311,x,695,C['line'],.6,.3)
-    for y in range(320,695,42):s.line(385,y,1414,y,C['line'],.6,.3)
-    # terrain peaks seeded only by actual activity
-    dates=sorted(contribution_days_map(data).items())
-    weekly=[sum(count for _,count in dates[k:k+7]) for k in range(0,len(dates),7)]
-    if not weekly:weekly=[0]*53
-    # normalize using high percentile rather than maximum for stable peaks
-    sorted_week=sorted(weekly)
-    norm=max(1,sorted_week[min(len(sorted_week)-1,int(len(sorted_week)*.92))])
-    # spatial gaussian hills using 9 binned weekly activity clusters
-    peaks=[]
-    for i in range(9):
-        a=round(i*len(weekly)/9); b=round((i+1)*len(weekly)/9)
-        value=max(weekly[a:b] or [0])
-        power=clamp(math.log1p(value)/math.log1p(norm))
-        px=-.9+i*1.8/8
-        pz=.16+(.62*(.5+.5*math.sin(i*1.7+.6)))
-        peaks.append((px,pz,power))
-    # render back rows first, front rows last with colored segments
-    for zi in range(32, -1, -1):
-        z=zi/32
-        widthfactor=(.83+.17*(1-z))*math.sqrt(max(0.01,1-(z-.5)**2*2.5))
-        vals=[]
-        for xi in range(113):
-            xx=-widthfactor+(2*widthfactor)*xi/112
-            h=0.035+.022*math.sin(xx*14+z*17)**2
-            for px,pz,power in peaks:
-                h+=.78*power*math.exp(-(((xx-px)/.18)**2+((z-pz)/.28)**2)*1.1)
-            h=clamp(h,0,1)
-            X=907+xx*483
-            Y=629 + (0.5-z)*199 - h*223*(.79+.21*z)
-            vals.append((X,Y,h))
-        for a,b in zip(vals,vals[1:]):
-            lev=(a[2]+b[2])/2
-            color=gradient_chart_color(lev)
-            s.line(a[0],a[1],b[0],b[1],color,.92,.38+.53*z)
-        if zi%4==0:
-            for k in range(0,len(vals),7):
-                x,y,h=vals[k]
-                s.line(x,y,x,y+7,C['cyan'],.55,.2)
-    # bright tracking route, stars
-    s.path('M520 599 C660 616 668 545 780 578 S941 465 1065 483 S1202 548 1280 520','#DFFDE3',2.4,opacity=.7,extra='stroke-dasharray="7 8"')
-    # Label few peaks: activity levels from actual slices
-    for i in [1,4,6,8]:
-        px,pz,power=peaks[i]
-        X=907+px*483
-        h=0.05+0.40*power
-        Y=629+(0.5-pz)*199-h*145
-        Y=clamp(Y,355,615)
-        co=gradient_chart_color(.20+.8*power)
-        s.circle(X,Y,7,co,'#F8FFFC',2)
-        s.circle(X,Y,2,'#F2FCFD')
-        s.line(X,Y-8,X,Y-31,co,1.1,.8)
-        s.rect(X-27,Y-54,56,21,'#0F2029',co,.7,4)
-        s.text(X,Y-39,f'{round(power*100)}%',11,co,600,'text-anchor="middle"')
-    # Compass and mini labels
-    s.circle(1341,362,42,'none','#477383',1)
-    s.path('M1341 335 L1334 380 L1341 368 L1348 380 Z',C['cyan'],.8,'#3DDCE1')
-    s.text(1337,308,'N',13,C['cyan'])
-    s.text(1340,418,'S',13,C['soft'])
-    s.text(1383,367,'E',12,C['soft'])
-    s.text(1290,367,'W',12,C['soft'])
-    s.add('</g>')
-    # telemetry metrics
-    metrics=[(375,262,'CONTRIBUTIONS',str(data['total']),C['green']),
-             (651,245,'PUBLIC REPOS',str(data['repos']),C['purple']),
-             (910,243,'ACTIVE DAYS',str(sum(x['contributionCount']>0 for x in data['days'])),C['orange']),
-             (1166,253,'PRIMARY','TypeScript',C['cyan'])]
-    for x,w,lab,val,col in metrics:
-        s.panel(x,720,w,101,col)
-        s.text(x+18,749,lab,13,C['soft'],600)
-        s.text(x+18,790,val,26 if len(val)<6 else 21,col,700)
-        for j in range(7):
-            bh=(j*9+len(val)*5)%25+6
-            s.rect(x+w-87+j*9,791-bh,5,bh,col,extra=f'opacity="{.22+j*.08:.2f}"')
-    # heatmap panel
-    s.panel(375,834,1044,145,C['purple'])
-    s.text(394,859,'/// CONTRIBUTION MAP',17,C['white'],700)
-    s.text(1141,859,'LESS',12,C['soft'])
-    for k in range(1,7):s.rect(1180+k*22,848,16,11,color_for_count(k,6),r=2)
-    s.text(1366,859,'MORE',12,C['soft'])
-    # weekly calendar aligns Sunday to Saturday
-    mapping=contribution_days_map(data)
-    parsed=[date.fromisoformat(x) for x in mapping]
-    end=max(parsed) if parsed else date.today()
-    first=end-timedelta(days=364)
+def render_terrain(data):
+    s=SVG(520,'DOLENT colorful mountain contour visualization of weekly GitHub activity')
+    title(s,'03  //  ACTIVITY TERRAIN', 'PREVIEW / SYNTHETIC DATA' if data['demo'] else 'WEEKLY ACTIVITY / VISUAL INTERPRETATION')
+    s.rect(30,74,1140,422,'#091522',C['border'],1,8)
+    s.rect(31,75,1138,420,'url(#grid)')
+    s.circle(595,290,255,'url(#aura)')
+    s.text(54,112,'TOPOGRAPHIC SIGNAL',17,C['cyan'],700)
+    s.text(55,139,'12 MONTHS',16,C['soft'])
+    s.line(55,151,254,151,C['border'])
+    s.text(55,189,'HEIGHT = WEEKLY ACTIVITY',14,C['dim'])
+    s.text(55,216,'COLOR = RELATIVE INTENSITY',14,C['dim'])
+    # chart floor; perspective bands
+    cx=680;base_y=411;rx=465;ry=72
+    s.add(f'<ellipse cx="{cx}" cy="{base_y}" rx="{rx}" ry="{ry}" fill="#0B1D29" stroke="#477387" stroke-width="1.2"/>')
+    for i in range(1,6):
+        s.add(f'<ellipse cx="{cx}" cy="{base_y}" rx="{rx-i*65}" ry="{ry-i*10}" fill="none" stroke="#2C5060" stroke-width=".9" opacity=".7"/>')
+    weeks=gather_weeks(data)
+    if not weeks:weeks=[0]*53
+    order=sorted(weeks)
+    top=max(1,order[min(len(order)-1,int((len(order)-1)*.93))])
+    norm=[clamp(math.log1p(v)/math.log1p(top)) for v in weeks]
+    # Smooth neighboring bins with a Gaussian kernel to make a natural geological silhouette.
+    def activity(u):
+        pos=clamp(u)* (len(norm)-1)
+        sm=0.;den=0.
+        for k in range(max(0,int(pos)-9),min(len(norm),int(pos)+11)):
+            ww=math.exp(-((k-pos)/2.9)**2/2)
+            sm+=norm[k]*ww;den+=ww
+        return sm/max(.01,den)
+    # place contours from back to front; separate gradients for each line fragment
+    # Dominant localized hills turn active weeks into isolated topo peaks.
+    top_weeks=[]
+    for ix in sorted(range(len(weeks)), key=lambda k:weeks[k], reverse=True):
+        if weeks[ix] and all(abs(ix-j)>9 for j in top_weeks):
+            top_weeks.append(ix)
+        if len(top_weeks)>=4:
+            break
+    peak_z=[.58, .44, .64, .50]
+    peak_sources=[((ix/max(1,len(weeks)-1))*2-1, peak_z[n], .24+.79*norm[ix])
+                  for n,ix in enumerate(top_weeks)]
+    def surf(x,z):
+        u=clamp((x+1)/2)
+        hz=.042+.13*activity(u)
+        for k,(px,pz,power) in enumerate(peak_sources):
+            width=.10+(k%2)*.05
+            depth=.23
+            distance=((x-px)/width)**2+((z-pz)/depth)**2
+            hz+=power*math.exp(-distance*.69)
+        hz+=.024*math.sin(15*u+5*z)**2
+        return clamp(hz)
+    # peak height at x depends only on real weekly input, z controls view perspective
+    for iz in range(40,-1,-1):
+        z=iz/40
+        pts=[]
+        span=.98-(z-.5)**2*.27
+        for ix in range(171):
+            ux=ix/170
+            xx=(ux*2-1)*span
+            alt=surf(xx,z)
+            screenx=cx+xx*460
+            screeny=base_y + (.5-z)*174 - 207*alt*(.80+.2*z)
+            pts.append((screenx,screeny,alt))
+        for a,b in zip(pts,pts[1:]):
+            col=ramp((a[2]+b[2])*.53)
+            s.line(a[0],a[1],b[0],b[1],col,1.1,.44+.51*z)
+    # peak markers use real week activity numbers, spaced to avoid label overlaps
+    chosen=top_weeks[:3]
+    for idx in sorted(chosen):
+        u=idx/max(1,len(weeks)-1)
+        x=u*2-1
+        z=peak_z[top_weeks.index(idx)]
+        X=cx+x*460
+        Y=base_y+(.5-z)*174-207*surf(x,z)*(.80+.2*z)
+        Y=max(153,min(390,Y))
+        col=ramp(.31+.69*clamp(weeks[idx]/max(1,top)))
+        s.circle(X,Y,7,col,C['white'],1.8)
+        s.line(X,Y-7,X,Y-43,col,1.8,.88)
+        label=f'{weeks[idx]} / WK'
+        labw=119
+        s.rect(X-labw/2,Y-79,labw,29,'#10212D',col,1,5)
+        s.text(X,Y-59,label,16,col,700,'text-anchor="middle"')
+    # an abstract dotted expedition line, intentionally decorative, not data
+    s.path('M272 420 C420 385 476 442 575 360 S796 369 902 304 S1026 359 1138 315','#E7FFF4',2.4,alpha=.6,extra='stroke-dasharray="8 9"')
+    s.text(1008,470,'SIGNAL RANGE',14,C['soft'])
+    for k in range(7):s.rect(997+k*23,482,18,9,ramp(k/6),r=2)
+    s.text(56,473,'ILLUSTRATIVE RELIEF GENERATED FROM WEEKLY COUNTS',13,C['dim'])
+    s.save('terrain.svg',False)
+
+
+def render_activity(data):
+    s=SVG(346,'GitHub activity statistics and 12-month contribution heatmap')
+    title(s,'04  //  CONTRIBUTION MAP', 'PREVIEW / SYNTHETIC DATA' if data['demo'] else 'CALENDAR / DAILY CONTRIBUTIONS')
+    s.pane(26,75,245,245,C['purple'])
+    active=sum(int(d['contributionCount'])>0 for d in data['days'])
+    pairs=[('TOTAL CONTRIB.',str(data['total']),C['green']),
+           ('ACTIVE DAYS',str(active),C['orange']),
+           ('PUBLIC REPOS',str(data['repos']),C['purple'])]
+    for i,(k,v,c) in enumerate(pairs):
+        y=114+i*72
+        s.text(44,y,k,15,C['soft'])
+        s.text(44,y+37,v,33,c,700)
+        if i<2:s.line(42,y+51,250,y+51,C['border'])
+    s.pane(287,75,887,245,C['cyan'])
+    s.text(309,111,'CONTRIBUTION INTENSITY',17,C['white'],700)
+    s.text(964,111,'LOW',14,C['dim'])
+    for i in range(8):s.rect(1015+i*12,98,10,12,ramp(i/7),r=2)
+    s.text(1161,111,'HIGH',14,C['soft'],400,'text-anchor="end"')
+    by_day={d['date']:max(0,int(d['contributionCount'])) for d in data['days']}
+    parsed=sorted(date.fromisoformat(d) for d in by_day)
+    if not parsed:
+        s.save('activity.svg',False);return
+    last=parsed[-1]
+    # Sunday-aligned exact 53 columns. The date window comes from GitHub's calendar.
+    first=last-timedelta(days=364)
     first-=timedelta(days=(first.weekday()+1)%7)
-    n_weeks=math.ceil((end-first).days/7)+1
-    sq=12.4; gap=3.9; left=425; top=882
-    last_month=None
-    # pick 95th percentile for meaningful relative scale
-    vals=sorted(mapping.values()); p95=vals[min(len(vals)-1,int(len(vals)*.95))] if vals else 1
-    for wi in range(n_weeks):
-        ws=first+timedelta(days=wi*7)
-        if ws.month!=last_month:
-            if wi< n_weeks-1: s.text(left+wi*(sq+gap),878,ws.strftime('%b').upper(),10,C['soft'])
-            last_month=ws.month
+    weeks=math.ceil((last-first).days/7)+1
+    # scale to exactly fit panel width in case GitHub calendar includes 54 weeks
+    available=825;gap=3.0; cell=min(13.5,(available/max(1,weeks))-gap)
+    x0=332; y0=167
+    vals=sorted(by_day.values())
+    p95=max(1,vals[min(len(vals)-1,int((len(vals)-1)*.95))])
+    prev_month=None
+    for wk in range(weeks):
+        sunday=first+timedelta(days=7*wk)
+        if sunday.month!=prev_month:
+            if wk<weeks-1:
+                s.text(x0+wk*(cell+gap),150,sunday.strftime('%b').upper(),13,C['soft'])
+            prev_month=sunday.month
         for dow in range(7):
-            day=ws+timedelta(days=dow)
-            if day>end:continue
-            val=mapping.get(day.isoformat(),0)
-            col=color_for_count(val,p95)
-            s.rect(left+wi*(sq+gap),top+dow*13.1,sq,10.8,col,r=2)
-    s.text(395,893,'SUN',10,C['muted'])
-    s.text(395,919,'TUE',10,C['muted'])
-    s.text(395,945,'THU',10,C['muted'])
-    # header mode badge explicit labeling synthetic data
-    if data['demo']:
-        s.rect(765,24,222,25,'#40211D',C['orange'],.85,4)
-        s.text(775,41,'PREVIEW: SYNTHETIC DATA',12,C['yellow'],700)
-    # footer microtext
-    s.text(47,990,'END OF TRANSMISSION //',10,C['muted'])
-    s.text(1300,990,'SYS_READY_',10,C['green'],700)
-    s.add('<rect x="0" y="0" width="1440" height="1010" fill="url(#scanlines)" opacity=".17" pointer-events="none"/>')
-    s.add('</svg>')
-    OUT.parent.mkdir(parents=True,exist_ok=True)
-    OUT.write_text('\n'.join(s.parts),encoding='utf-8')
-    print(f'Wrote {OUT} ({OUT.stat().st_size:,} bytes); demo={data["demo"]}, total={data["total"]}')
+            dd=sunday+timedelta(days=dow)
+            if dd>last or dd<parsed[0]:continue
+            cnt=by_day.get(dd.isoformat(),0)
+            s.rect(x0+wk*(cell+gap),y0+dow*19,cell,13,heat_count(cnt,p95),r=2)
+    for weekday,yy in [('SUN',178),('TUE',216),('THU',254),('SAT',292)]:
+        s.text(302,yy,weekday,12,C['dim'])
+    s.text(309,306,'RED = HIGHER ACTIVITY · NOT A WARNING',13,C['soft'])
+    s.save('activity.svg',False)
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--demo',action='store_true');args=p.parse_args()
-    build_svg(demo_data() if args.demo else github_data())
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--demo',action='store_true',help='generate visibly labeled synthetic sample')
+    args=parser.parse_args()
+    ASSETS.mkdir(exist_ok=True,parents=True)
+    data=demo_data() if args.demo else github_data()
+    render_header(data['demo'])
+    render_project('FRYD','AI PRODUCTIVITY / PERSONAL SYSTEM','TYPESCRIPT  /  PYTHON  /  AI',1,C['cyan'],'IN DEVELOPMENT','V')
+    render_project('HERCULES','ANDROID FITNESS / TRAINING LOG','KOTLIN  /  COMPOSE  /  ROOM',2,C['orange'],'LOCAL PROJECT','H')
+    render_terrain(data)
+    render_activity(data)
+    print('Mode:', 'DEMO (synthetic sample)' if data['demo'] else 'LIVE (GitHub API)')
+
+
 if __name__=='__main__':main()
