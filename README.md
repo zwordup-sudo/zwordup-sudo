@@ -1,5 +1,3 @@
-<!-- DOLENT / Modular README V2. Each panel is a standalone SVG. -->
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/zwordup-sudo/zwordup-sudo/gitascii/profiles/default/dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/zwordup-sudo/zwordup-sudo/gitascii/profiles/default/light.svg">
