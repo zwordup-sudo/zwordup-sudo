@@ -21,3 +21,8 @@
 ---
 
 `> Explore the repositories. More projects in development.`
+---
+
+<img src="./assets/projects.svg" alt="DOLENT featured projects: ASCII Motion Carousel, FRYD, Hercules, BotArena, and Loto Blanco" width="100%">
+
+**OPEN REPOS //** [01 ASCII Motion Carousel](https://github.com/zwordup-sudo/ascii-motion-carousel) · [02 FRYD](https://github.com/zwordup-sudo/FRYD) · [03 Hercules](https://github.com/zwordup-sudo/Hercules) · [04 BotArena](https://github.com/zwordup-sudo/BotArena) · [05 Loto Blanco](https://github.com/zwordup-sudo/loto-blanco)
