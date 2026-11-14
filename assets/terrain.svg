@@ -7004,7 +7004,7 @@
 <circle cx="1122.64" cy="237.62" r="7.00" fill="#FF5367" stroke="#EEF6F9" stroke-width="1.8" />
 <line x1="1122.64" y1="230.62" x2="1122.64" y2="194.62" stroke="#FF5367" stroke-width="1.8" opacity="0.88"/>
 <rect x="1063.14" y="158.62" width="119.00" height="29.00" rx="5" fill="#10212D" stroke="#FF5367" stroke-width="1" />
-<text x="1122.64" y="178.62" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="16" font-weight="700" fill="#FF5367" text-anchor="middle">20 / WK</text>
+<text x="1122.64" y="178.62" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="16" font-weight="700" fill="#FF5367" text-anchor="middle">24 / WK</text>
 <path d="M272 420 C420 385 476 442 575 360 S796 369 902 304 S1026 359 1138 315" fill="none" stroke="#E7FFF4" stroke-width="2.4" opacity="0.6" stroke-dasharray="8 9"/>
 <text x="1008.00" y="470.00" font-family='"DejaVu Sans Mono", "Liberation Mono", monospace' font-size="14" font-weight="400" fill="#A6BED0" >SIGNAL RANGE</text>
 <rect x="997.00" y="482.00" width="18.00" height="9.00" rx="2" fill="#1F5464" />
